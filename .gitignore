@@ -27,8 +27,8 @@ yarn-error.log*
 # local env files
 .env*.local
 passowrd.txt
-types_db.ts
-types.ts
+# types_db.ts
+# types.ts
 
 # vercel
 .vercel
