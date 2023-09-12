@@ -17,7 +17,7 @@ const Modal: React.FC<ModalProps> = ({
   description,
   children,
 }) => {
-  const authModel = useAuthModal();
+  // const authModel = useAuthModal();
   return (
     <Dialog.Root open={isOpen} defaultOpen={isOpen} onOpenChange={onChange}>
       <Dialog.Portal>
@@ -73,7 +73,6 @@ const Modal: React.FC<ModalProps> = ({
             rounded-full
             focus:outline-none
             "
-              onClick={authModel.onClose}
             >
               <IoMdClose />
             </button>

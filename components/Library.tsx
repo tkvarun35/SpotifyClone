@@ -6,23 +6,21 @@ import { useUser } from "@/hooks/useUser";
 import { log } from "console";
 import useUploadModal from "@/hooks/useUploadModal";
 
-
 const Library = () => {
-  const authModel=useAuthModal();
-  const {user}=useUser();
-  const uploadModal=useUploadModal();
+  const authModel = useAuthModal();
+  const { user } = useUser();
+  const uploadModal = useUploadModal();
 
   const handleClick = () => {
     //To handle click later
-    
-    if(!user){      
-     return authModel.onOpen();
+
+    if (!user) {
+      return authModel.onOpen();
     }
-    
+
     // ToDO:Check for subscription
 
     return uploadModal.onOpen();
-    
   };
   return (
     <div className="flex flex-col">
