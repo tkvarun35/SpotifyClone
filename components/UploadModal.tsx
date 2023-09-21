@@ -8,13 +8,18 @@ import Input from "./Input";
 import Button from "./Button";
 import { toast } from "react-hot-toast";
 import { useUser } from "@/hooks/useUser";
-import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import {
+  SupabaseClient,
+  useSupabaseClient,
+} from "@supabase/auth-helpers-react";
+import { useRouter } from "next/navigation";
 
 const UploadModal = () => {
   const uploadModal = useUploadModal();
   const [isLoading, setisLoading] = useState(false);
   const { user } = useUser();
   const supabaseClient = useSupabaseClient();
+  const router = useRouter();
 
   const { register, handleSubmit, reset } = useForm<FieldValues>({
     defaultValues: {
@@ -72,6 +77,25 @@ const UploadModal = () => {
         setisLoading(false);
         return toast.error("Failed Image Upload");
       }
+
+      const { error: supabaseError } = await supabaseClient
+        .from("songs")
+        .insert({
+          user_id: user.id,
+          title: values.title,
+          author: values.author,
+          image_path: imageData.path,
+          song_path: songData.path,
+        });
+      if (supabaseError) {
+        setisLoading(false);
+        return toast.error(supabaseError.message);
+      }
+      router.refresh();
+      setisLoading(false);
+      toast.success("Song Created!");
+      reset();
+      uploadModal.onClose();
     } catch (error) {
       toast("Something went wrong");
     } finally {
