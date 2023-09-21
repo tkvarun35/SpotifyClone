@@ -10,7 +10,18 @@ interface SongItemProps {
 const SongItem: React.FC<SongItemProps> = ({ data, onClick }) => {
   return (
     <>
-      <div>Song Item</div>
+      <div
+      onClick={()=>onClick(data.id)}
+      className="
+      relative
+      group
+      flex
+      flex-col
+      items-center
+      justify-center
+      "
+
+      >Song Item</div>
     </>
   );
 };
