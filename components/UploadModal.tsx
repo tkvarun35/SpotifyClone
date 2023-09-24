@@ -133,7 +133,7 @@ const UploadModal = () => {
           />
         </div>
         <div>
-          <div className="pb-1">Select a song</div>
+          <div className="pb-1">Select an image</div>
           <Input
             id="image"
             type="file"

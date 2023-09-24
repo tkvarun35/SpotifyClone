@@ -5,8 +5,14 @@ import useAuthModal from "@/hooks/useAuthModal";
 import { useUser } from "@/hooks/useUser";
 import { log } from "console";
 import useUploadModal from "@/hooks/useUploadModal";
+import { Song } from "@/types";
+import MediaItem from "./MediaItem";
 
-const Library = () => {
+interface LibraryProps {
+  songs: Song[];
+}
+
+const Library: React.FC<LibraryProps> = ({ songs }) => {
   const authModel = useAuthModal();
   const { user } = useUser();
   const uploadModal = useUploadModal();
@@ -35,7 +41,11 @@ const Library = () => {
           onClick={handleClick}
         />
       </div>
-      <div className="flex flex-col gap-y-2  mt-4 px-3">List of songs!!</div>
+      <div className="flex flex-col gap-y-2  mt-4 px-3">
+        {songs.map((item) => (
+          <MediaItem onClick={() => {}} key={item.id} data={item} />
+        ))}
+      </div>
     </div>
   );
 };
