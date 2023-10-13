@@ -47,6 +47,10 @@ const Slider: React.FC<SliderProps> = ({ value = 1, onChange }) => {
           "
         />
       </RadixSlider.Track>
+      <RadixSlider.Thumb
+        className="block w-4 h-4 bg-white  rounded-[10px] "
+        aria-label="Volume"
+      />
     </RadixSlider.Root>
   );
 };
