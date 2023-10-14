@@ -5,8 +5,8 @@ import { json } from "stream/consumers";
 
 export const getURL=()=>{
     let url=
-    process.env.NEXT_PUBLIC_SITE_URL ??
-    process.env.NEXT_PUBLIC_VERCEL_URL ??
+    process?.env?.NEXT_PUBLIC_SITE_URL ??
+    process?.env?.NEXT_PUBLIC_VERCEL_URL ??
     'http://localhost:3000/';
 
     url=url.includes('http')?url:`http://${url}`
@@ -34,7 +34,8 @@ export const postData= async ({
         console.log("Error in POST",{url,data,res});
         throw new Error(res.statusText)
     }
-
+    // console.log(res);
+    
     return res.json();
     
 }
