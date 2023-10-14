@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, disabled, ...props }, ref) => {
@@ -29,6 +29,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         focus:outline-none
 
         `,
+        disabled && 'opacity-75',
           className
         )}
         disabled={disabled}
